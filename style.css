@@ -1,0 +1,39 @@
+/* BORDER SWITCH FOR DESIGN */
+
+/* * {
+  border: 1px solid red;
+} */
+
+/* GENERAL STYLES */
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+}
+
+h1 {
+  text-align: center;
+}
+
+p {
+  text-align: center;
+}
+
+/* GRID STYLES */
+
+.gridbox {
+  display: flex;
+  flex-direction: column;
+}
+
+.gridrow {
+  display: flex;
+  justify-content: center;
+}
+
+.square {
+  width: 20px;
+  height: 20px;
+  border: 1px solid black;
+}
