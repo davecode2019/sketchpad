@@ -10,21 +10,41 @@ body {
   margin: 0;
   padding: 0;
   height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: "Edu SA Beginner", cursive;
 }
 
 h1 {
   text-align: center;
+  font-size: 50px;
+  font-weight: 900;
 }
 
 p {
   text-align: center;
 }
 
+/* HEADER */
+
+header {
+  height: 150px;
+}
+
 /* GRID STYLES */
 
+.gridarea {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .gridbox {
+  width: 600px;
   display: flex;
   flex-direction: column;
+  border: 1px solid black;
+  box-shadow: 0 0 10px 1px;
 }
 
 .gridrow {
@@ -32,8 +52,13 @@ p {
   justify-content: center;
 }
 
-.square {
-  width: 20px;
-  height: 20px;
-  border: 1px solid black;
+/* .square {
+  width: 25px;
+  height: 25px;
+} */
+
+/* FOOTER */
+
+footer {
+  margin-top: auto;
 }
