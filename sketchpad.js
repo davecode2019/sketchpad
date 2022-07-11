@@ -20,7 +20,7 @@ const setColor = (color) => {
   penColor = color;
 };
 
-const pageSetup = () => {
+const drawGrid = () => {
   // Clear any existing grid
   gridbox.innerHTML = "";
   // Draw grid
@@ -38,6 +38,9 @@ const pageSetup = () => {
       row.appendChild(square);
     }
   }
+};
+
+const setListeners = () => {
   // Make node list of grid elements
   const squares = document.querySelectorAll(".square");
   // Add event listeners to gid elements
@@ -64,6 +67,11 @@ const pageSetup = () => {
       setColor(e.target.id);
     });
   });
+};
+
+const pageSetup = () => {
+  drawGrid();
+  setListeners();
 };
 
 pageSetup();
