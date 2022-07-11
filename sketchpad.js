@@ -1,7 +1,8 @@
 const gridbox = document.querySelector(".gridbox");
 const GRIDWIDTH = 600; // Drawing area size in pixels (height is the same)
 let switchOn = false; // Pen default to off
-let gridSize = 100; // Amount of squares on each side of the grid
+let penColor = "red"; // Default pen color
+let gridSize = 16; // Amount of squares on each side of the grid
 let squareSize = GRIDWIDTH / gridSize; // Calculates the pixel size for each square within the drawing area
 
 const setSize = () => {
@@ -13,6 +14,10 @@ const setSize = () => {
   } else {
     setSize();
   }
+};
+
+const setColor = (color) => {
+  penColor = color;
 };
 
 const pageSetup = () => {
@@ -45,13 +50,20 @@ const pageSetup = () => {
     });
     square.addEventListener("mouseover", function (e) {
       if (switchOn) {
-        e.target.style.backgroundColor = "red";
+        e.target.style.backgroundColor = penColor;
       }
     });
   });
 
   const gridsizeButton = document.querySelector(".gridsize-button");
   gridsizeButton.addEventListener("click", setSize);
+
+  const colorButtons = document.querySelectorAll(".colorbutton");
+  colorButtons.forEach((button) => {
+    button.addEventListener("click", function (e) {
+      setColor(e.target.id);
+    });
+  });
 };
 
 pageSetup();
