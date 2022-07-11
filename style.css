@@ -13,6 +13,7 @@ body {
   display: flex;
   flex-direction: column;
   font-family: "Edu SA Beginner", cursive;
+  background-color: aliceblue;
 }
 
 h1 {
@@ -23,6 +24,18 @@ h1 {
 
 p {
   text-align: center;
+}
+
+button {
+  font-weight: 700;
+  padding: 5px 20px;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+button:hover {
+  box-shadow: 0 0 10px 1px;
 }
 
 /* HEADER */
@@ -45,6 +58,7 @@ header {
   flex-direction: column;
   border: 1px solid black;
   box-shadow: 0 0 10px 1px;
+  background-color: white;
 }
 
 .gridrow {
@@ -52,10 +66,19 @@ header {
   justify-content: center;
 }
 
-/* .square {
-  width: 25px;
-  height: 25px;
-} */
+.square {
+  padding: 0;
+  margin: 0;
+}
+
+/* MENU AREA */
+
+.menuarea {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
 
 /* FOOTER */
 
