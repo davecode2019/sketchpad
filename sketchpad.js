@@ -2,10 +2,11 @@ const gridbox = document.querySelector(".gridbox");
 const GRIDWIDTH = 600; // Drawing area size in pixels (height is the same)
 let switchOn = false; // Pen default to off
 let penColor = "red"; // Default pen color
+let rainbowPen = true;
 let gridSize = 16; // Amount of squares on each side of the grid
 let squareSize = GRIDWIDTH / gridSize; // Calculates the pixel size for each square within the drawing area
 
-const setSize = () => {
+function setSize() {
   let userSize = prompt("Select grid size between 1 and 100:");
   if (userSize > 0 && userSize <= 100) {
     gridSize = userSize;
@@ -14,13 +15,23 @@ const setSize = () => {
   } else {
     setSize();
   }
-};
+}
 
-const setColor = (color) => {
+function setColor(color) {
   penColor = color;
-};
+}
 
-const drawGrid = () => {
+function changeColor() {
+  if (rainbowPen) {
+    let red = Math.floor(Math.random() * 255);
+    let green = Math.floor(Math.random() * 255);
+    let blue = Math.floor(Math.random() * 255);
+    let rgb = `rgb(${red},${green},${blue})`;
+    setColor(rgb);
+  }
+}
+
+function drawGrid() {
   // Clear any existing grid
   gridbox.innerHTML = "";
   // Draw grid
@@ -38,13 +49,19 @@ const drawGrid = () => {
       row.appendChild(square);
     }
   }
-};
+}
 
-const setListeners = () => {
+function setListeners() {
   // Make node list of grid elements
   const squares = document.querySelectorAll(".square");
   // Add event listeners to gid elements
   squares.forEach((square) => {
+    square.addEventListener("dragstart", function (e) {
+      e.preventDefault();
+    });
+    square.addEventListener("drop", function (e) {
+      e.preventDefault();
+    });
     square.addEventListener("mousedown", function () {
       switchOn = true; // Pen on
     });
@@ -56,6 +73,11 @@ const setListeners = () => {
         e.target.style.backgroundColor = penColor;
       }
     });
+    square.addEventListener("mouseleave", () => {
+      if (switchOn && rainbowPen) {
+        changeColor();
+      }
+    });
   });
 
   const gridsizeButton = document.querySelector(".gridsize-button");
@@ -65,13 +87,16 @@ const setListeners = () => {
   colorButtons.forEach((button) => {
     button.addEventListener("click", function (e) {
       setColor(e.target.id);
+      rainbowPen = false;
     });
   });
-};
+}
 
-const pageSetup = () => {
+function pageSetup() {
   drawGrid();
   setListeners();
-};
+}
 
 pageSetup();
+
+// need to fine tune the rainbow pen logic and add the button.
