@@ -1,16 +1,17 @@
-const gridbox = document.querySelector(".gridbox");
+const gridbox = document.querySelector(".grid-box");
 const GRIDWIDTH = 600; // Drawing area size in pixels (height is the same)
 let switchOn = false; // Pen default to off
 let penColor = "red"; // Default pen color
-let rainbowPen = true;
+let rainbowPen = false;
 let gridSize = 16; // Amount of squares on each side of the grid
 let squareSize = GRIDWIDTH / gridSize; // Calculates the pixel size for each square within the drawing area
 
 function setSize() {
+  // Sets the grid size based on user input, validated between 1 and 100.
   let userSize = prompt("Select grid size between 1 and 100:");
   if (userSize > 0 && userSize <= 100) {
     gridSize = userSize;
-    squareSize = GRIDWIDTH / gridSize;
+    squareSize = GRIDWIDTH / gridSize; // Recalculate square side sizes
     pageSetup();
   } else {
     setSize();
@@ -18,6 +19,7 @@ function setSize() {
 }
 
 function setColor(color) {
+  //Setter function for penColor
   penColor = color;
 }
 
@@ -37,7 +39,7 @@ function drawGrid() {
   // Draw grid
   for (let i = 0; i < gridSize; i++) {
     let row = document.createElement("div");
-    row.classList.add("gridrow");
+    row.classList.add("grid-row");
     gridbox.appendChild(row);
     for (let j = 0; j < gridSize; j++) {
       let square = document.createElement("div");
@@ -83,7 +85,10 @@ function setListeners() {
   const gridsizeButton = document.querySelector(".gridsize-button");
   gridsizeButton.addEventListener("click", setSize);
 
-  const colorButtons = document.querySelectorAll(".colorbutton");
+  const rainbowButton = document.querySelector(".rainbow-button");
+  rainbowButton.addEventListener("click", () => (rainbowPen = true));
+
+  const colorButtons = document.querySelectorAll(".color-button");
   colorButtons.forEach((button) => {
     button.addEventListener("click", function (e) {
       setColor(e.target.id);
@@ -98,5 +103,3 @@ function pageSetup() {
 }
 
 pageSetup();
-
-// need to fine tune the rainbow pen logic and add the button.

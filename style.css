@@ -46,13 +46,13 @@ header {
 
 /* GRID STYLES */
 
-.gridarea {
+.grid-area {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.gridbox {
+.grid-box {
   width: 600px;
   display: flex;
   flex-direction: column;
@@ -61,7 +61,7 @@ header {
   background-color: white;
 }
 
-.gridrow {
+.grid-row {
   display: flex;
   justify-content: center;
 }
@@ -73,7 +73,7 @@ header {
 
 /* MENU AREA */
 
-.menuarea {
+.menu-area {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -81,13 +81,13 @@ header {
   margin-top: 30px;
 }
 
-.colormenu {
+.color-menu {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.colorbutton {
+.color-button {
   height: 30px;
   width: 30px;
   margin: 10px;
